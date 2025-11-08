@@ -1,0 +1,143 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    11/07/2025  21:11:21  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\手机自动开关 PRINT (.\Listings\手机自动开关.m51) RAMSIZE (25
+>> 6)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\手机自动开关 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?MAIN
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0005H     UNIT         ?C_INITSEG
+                    0008H     0003H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    009AH     0030H     UNIT         ?PR?TIMER0_ISR?MAIN
+            CODE    00CAH     0020H     UNIT         ?PR?_DELAYMS?MAIN
+            CODE    00EAH     0016H     UNIT         ?PR?MAIN?MAIN
+            CODE    0100H     0010H     UNIT         ?PR?TIMER0_INIT?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\手机自动开关 (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?_DELAYMS?MAIN
+  +--> ?PR?TIMER0_INIT?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\手机自动开关 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/07/2025  21:11:21  PAGE 2
+
+
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00B2H         PUBLIC        P3M0
+  D:0090H         PUBLIC        P1
+  D:00B1H         PUBLIC        P3M1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:009AH         PUBLIC        Timer0_ISR
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  B:00A8H.7       PUBLIC        EA
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  C:00EAH         PUBLIC        main
+  C:0100H         PUBLIC        Timer0_Init
+  D:0008H         PUBLIC        count
+  C:00CAH         PUBLIC        _DelayMs
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:00B0H.3       PUBLIC        LED
+  B:0088H.4       PUBLIC        TR0
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          TIMER0_INIT
+  C:0100H         LINE#         7
+  C:0100H         LINE#         8
+  C:0103H         LINE#         9
+  C:0106H         LINE#         10
+  C:0109H         LINE#         11
+  C:010BH         LINE#         12
+  C:010DH         LINE#         13
+  C:010FH         LINE#         14
+  -------         ENDPROC       TIMER0_INIT
+  -------         PROC          _DELAYMS
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:00CAH         LINE#         18
+  C:00CAH         LINE#         20
+  C:00D4H         LINE#         21
+  C:00E9H         LINE#         22
+  -------         ENDPROC       _DELAYMS
+  -------         PROC          MAIN
+  C:00EAH         LINE#         24
+  C:00EAH         LINE#         25
+  C:00EDH         LINE#         26
+  C:00F0H         LINE#         27
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/07/2025  21:11:21  PAGE 3
+
+
+  C:00F2H         LINE#         28
+  C:00F9H         LINE#         29
+  C:00FBH         LINE#         30
+  C:00FEH         LINE#         31
+  -------         ENDPROC       MAIN
+  -------         PROC          TIMER0_ISR
+  C:009AH         LINE#         35
+  C:00A3H         LINE#         36
+  C:00A6H         LINE#         37
+  C:00A9H         LINE#         38
+  C:00BBH         LINE#         39
+  C:00C1H         LINE#         41
+  C:00C3H         LINE#         42
+  C:00C3H         LINE#         43
+  -------         ENDPROC       TIMER0_ISR
+  -------         ENDMOD        MAIN
+
+Program Size: data=11.0 xdata=0 code=269
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

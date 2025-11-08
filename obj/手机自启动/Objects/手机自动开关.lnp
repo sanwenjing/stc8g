@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\手机自动开关" 
+PRINT(".\Listings\手机自动开关.m51") RAMSIZE(256) 
