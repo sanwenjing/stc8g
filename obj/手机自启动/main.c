@@ -24,9 +24,9 @@ void DelayMs(unsigned int ms) {
 void main() {
     P3M0 &= ~0x08;
 	  P3M1 &= ~0x08;
-	  LED = 0; 
+	  LED = 1; 
 	  DelayMs(20000);
-    LED = 1;          // ??????
+    LED = 0;          // ??????
     Timer0_Init();
     while(1);
 }
@@ -38,6 +38,6 @@ void Timer0_ISR() interrupt 1 {
     if (++count >= 600) {  // 50ms*60=3?
         count = 0;
         //LED = ~LED;    // ??LED??
-			 LED = 0;
+			 LED = 1;
     }
 }
