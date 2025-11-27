@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              11/07/2025 21:11:21 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              11/27/2025 07:58:15 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -10,60 +10,63 @@ line level    source
 
    1          #include <STC8G.H>
    2          
-   3          sbit LED = P3^3;
-   4          
+   3          sbit LED1 = P3^3;
+   4          sbit LED2 = P3^2;
    5          
    6          
-   7          void Timer0_Init() {
-   8   1          TMOD = 0x01;      // ???0????1(16???)
-   9   1          TH0 = 0xD8;       // ?????(11.0592MHz?50ms????)^[11]^
-  10   1          TL0 = 0xF0;
-  11   1          ET0 = 1;          // ?????0??
-  12   1          EA = 1;           // ??????
-  13   1          TR0 = 1;          // ?????0
-  14   1      }
-  15          
-  16          volatile unsigned int count = 0; // ????
-  17          
-  18          void DelayMs(unsigned int ms) {
-  19   1          unsigned int i, j;
-  20   1          for (i = 0; i < ms; i++)
-  21   1              for (j = 0; j < 120; j++); 
-  22   1      }
-  23          
-  24          void main() {
-  25   1          P3M0 &= ~0x08;
-  26   1          P3M1 &= ~0x08;
-  27   1          LED = 0; 
-  28   1          DelayMs(20000);
-  29   1          LED = 1;          // ??????
-  30   1          Timer0_Init();
-  31   1          while(1);
-  32   1      }
-  33          
-  34          // ???0??????
-  35          void Timer0_ISR() interrupt 1 {
-  36   1          TH0 = 0xD8;       // ??????
-  37   1          TL0 = 0xF0;
-  38   1          if (++count >= 600) {  // 50ms*60=3?
-  39   2              count = 0;
-  40   2              //LED = ~LED;    // ??LED??
-  41   2             LED = 0;
-  42   2          }
-  43   1      }
+   7          
+   8          void Timer0_Init() {
+   9   1          TMOD = 0x01;      // ???0????1(16???)
+  10   1          TH0 = 0xD8;       // ?????(11.0592MHz?50ms????)^[11]^
+  11   1          TL0 = 0xF0;
+  12   1          ET0 = 1;          // ?????0??
+  13   1          EA = 1;           // ??????
+  14   1          TR0 = 1;          // ?????0
+  15   1      }
+  16          
+  17          volatile unsigned int count = 0; // ????
+  18          
+  19          void DelayMs(unsigned int ms) {
+  20   1          unsigned int i, j;
+  21   1          for (i = 0; i < ms; i++)
+  22   1              for (j = 0; j < 120; j++); 
+  23   1      }
+  24          
+  25          void main() {
+  26   1          //P3M0 &= ~0x08;
+  27   1          //P3M1 &= ~0x08;
+  28   1          P3M0 |= 0x0f; P3M1 &= ~0x0f; 
+  29   1          LED1 = 1; 
+  30   1          LED2 = 1;
+  31   1          DelayMs(20000);
+  32   1          LED1 = 0;          // ??????
+  33   1          Timer0_Init();
+  34   1          while(1);
+  35   1      }
+  36          
+  37          // ???0??????
+  38          void Timer0_ISR() interrupt 1 {
+  39   1          TH0 = 0xD8;       // ??????
+  40   1          TL0 = 0xF0;
+  41   1          if (++count >= 600) {  // 50ms*60=3?
+  42   2              count = 0;
+  43   2             LED2 = ~LED2;    // ??LED??
+  44   2             LED1 = 1;
+  45   2          }
+  46   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    118    ----
+   CODE SIZE        =    122    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =      2    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              11/27/2025 07:58:15 PAGE 2   
+
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
-
-C51 COMPILER V9.60.0.0   MAIN                                                              11/07/2025 21:11:21 PAGE 2   
 
 
 C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
